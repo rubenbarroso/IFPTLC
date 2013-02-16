@@ -20,13 +20,48 @@ We are going to perform syntactic derivations for the given expressions.
 	λ<name>.(<name> λ<name>.(<name> <argument expression>))
 	λ<name>.(<name> λ<name>.(<name> <expression>))
 	λ<name>.(<name> λ<name>.(<name> <name>))
-	λ<a>.(<name> λ<name>.(<name> <name>))
+	λa.(<name> λ<name>.(<name> <name>))
 	λa.(a λ<name>.(<name> <name>))
 	λa.(a λb.(<name> <name>))
 	λa.(a λb.(b <name>))
 	λa.(a λb.(b a))
 
 (b) λx.λy.λz.((z x) (z y))
+
+	<expression>
+	<function>
+	λ<name>.<body>
+	λ<name>.<expression>
+	λ<name>.<function>
+	λ<name>.λ<name>.<body>
+	λ<name>.λ<name>.<expression>
+	λ<name>.λ<name>.<function>
+	λ<name>.λ<name>.λ<name>.<body>
+	λ<name>.λ<name>.λ<name>.<expression>
+	λ<name>.λ<name>.λ<name>.<application>
+	λ<name>.λ<name>.λ<name>.(<function expression> <argument expression>)
+	λ<name>.λ<name>.λ<name>.(<expression> <argument expression>)
+	λ<name>.λ<name>.λ<name>.(<application> <argument expression>)
+	λ<name>.λ<name>.λ<name>.((<function expression> <argument expression>) <argument expression>)
+	λ<name>.λ<name>.λ<name>.((<expression> <argument expression>) <argument expression>)
+	λ<name>.λ<name>.λ<name>.((<name> <argument expression>) <argument expression>)
+	λ<name>.λ<name>.λ<name>.((<name> <expression>) <argument expression>)
+	λ<name>.λ<name>.λ<name>.((<name> <name>) <argument expression>)
+	λ<name>.λ<name>.λ<name>.((<name> <name>) <expression>)
+	λ<name>.λ<name>.λ<name>.((<name> <name>) <application>)
+	λ<name>.λ<name>.λ<name>.((<name> <name>) (<function expression> <argument expression>))
+	λ<name>.λ<name>.λ<name>.((<name> <name>) (<expression> <argument expression>))
+	λ<name>.λ<name>.λ<name>.((<name> <name>) (<name> <argument expression>))
+	λ<name>.λ<name>.λ<name>.((<name> <name>) (<name> <expression>))
+	λ<name>.λ<name>.λ<name>.((<name> <name>) (<name> <name>))
+	λx.λ<name>.λ<name>.((<name> <name>) (<name> <name>))
+	λx.λy.λ<name>.((<name> <name>) (<name> <name>))
+	λx.λy.λz.((<name> <name>) (<name> <name>))
+	λx.λy.λz.((z <name>) (<name> <name>))
+	λx.λy.λz.((z x) (<name> <name>))
+	λx.λy.λz.((z x) (z <name>))
+	λx.λy.λz.((z x) (z y))
+
 (c) (λf.λg.(λh.(g h) f) λp.λq.p)
 (d) λfee.λfi.λfo.λfum.(fum (fo (fi fee)))
 (e) (λp.(λq.p λx.(x p)) λi.λj.(j i))
