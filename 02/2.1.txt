@@ -107,4 +107,42 @@ We are going to perform syntactic derivations for the given expressions.
 	(λf.λg.(λh.(g h) f) λp.λq.p)
 
 (d) λfee.λfi.λfo.λfum.(fum (fo (fi fee)))
+
+	<expression>
+	<function>
+	λ<name>.<body>
+	λ<name>.<expression>
+	λ<name>.<function>
+	λ<name>.λ<name>.<body>
+	λ<name>.λ<name>.<expression>
+	λ<name>.λ<name>.<function>
+	λ<name>.λ<name>.λ<name>.<body>
+	λ<name>.λ<name>.λ<name>.<expression>
+	λ<name>.λ<name>.λ<name>.<function>
+	λ<name>.λ<name>.λ<name>.λ<name>.<body>
+	λ<name>.λ<name>.λ<name>.λ<name>.<expression>
+	λ<name>.λ<name>.λ<name>.λ<name>.(<function expression> <argument expression>)
+	λ<name>.λ<name>.λ<name>.λ<name>.(<expression> <argument expression>)
+	λ<name>.λ<name>.λ<name>.λ<name>.(<name> <argument expression>)
+	λ<name>.λ<name>.λ<name>.λ<name>.(<name> <expression>)
+	λ<name>.λ<name>.λ<name>.λ<name>.(<name> <application>)
+	λ<name>.λ<name>.λ<name>.λ<name>.(<name> (<function expression> <argument expression>))
+	λ<name>.λ<name>.λ<name>.λ<name>.(<name> (<expression> <argument expression>))
+	λ<name>.λ<name>.λ<name>.λ<name>.(<name> (<name> <argument expression>))
+	λ<name>.λ<name>.λ<name>.λ<name>.(<name> (<name> <expression>))
+	λ<name>.λ<name>.λ<name>.λ<name>.(<name> (<name> <application>))
+	λ<name>.λ<name>.λ<name>.λ<name>.(<name> (<name> (<function expression> <argument expression>)))
+	λ<name>.λ<name>.λ<name>.λ<name>.(<name> (<name> (<expression> <argument expression>)))
+	λ<name>.λ<name>.λ<name>.λ<name>.(<name> (<name> (<name> <argument expression>)))
+	λ<name>.λ<name>.λ<name>.λ<name>.(<name> (<name> (<name> <expression>)))
+	λ<name>.λ<name>.λ<name>.λ<name>.(<name> (<name> (<name> <name>)))
+	λfee.λ<name>.λ<name>.λ<name>.(<name> (<name> (<name> <name>)))
+	λfee.λfi.λ<name>.λ<name>.(<name> (<name> (<name> <name>)))
+	λfee.λfi.λfo.λ<name>.(<name> (<name> (<name> <name>)))
+	λfee.λfi.λfo.λfum.(<name> (<name> (<name> <name>)))
+	λfee.λfi.λfo.λfum.(fum (<name> (<name> <name>)))
+	λfee.λfi.λfo.λfum.(fum (fo (<name> <name>)))
+	λfee.λfi.λfo.λfum.(fum (fo (fi <name>)))
+	λfee.λfi.λfo.λfum.(fum (fo (fi fee)))
+
 (e) (λp.(λq.p λx.(x p)) λi.λj.(j i))
