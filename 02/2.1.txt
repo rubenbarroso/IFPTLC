@@ -1,0 +1,32 @@
+We are going to perform syntactic derivations for the given expressions.
+
+(a) λa.(a λb.(b a))
+
+	<expression>
+	<function>
+	λ<name>.<body>
+	λ<name>.<expression>
+	λ<name>.<application>
+	λ<name>.(<function expression> <argument expression>)
+	λ<name>.(<expression> <argument expression>)
+	λ<name>.(<name> <argument expression>)
+	λ<name>.(<name> <expression>)
+	λ<name>.(<name> <function>)
+	λ<name>.(<name> λ<name>.<body>)
+	λ<name>.(<name> λ<name>.<expression>)
+	λ<name>.(<name> λ<name>.<application>)
+	λ<name>.(<name> λ<name>.(<function expression> <argument expression>))
+	λ<name>.(<name> λ<name>.(<expression> <argument expression>))
+	λ<name>.(<name> λ<name>.(<name> <argument expression>))
+	λ<name>.(<name> λ<name>.(<name> <expression>))
+	λ<name>.(<name> λ<name>.(<name> <name>))
+	λ<a>.(<name> λ<name>.(<name> <name>))
+	λa.(a λ<name>.(<name> <name>))
+	λa.(a λb.(<name> <name>))
+	λa.(a λb.(b <name>))
+	λa.(a λb.(b a))
+
+(b) λx.λy.λz.((z x) (z y))
+(c) (λf.λg.(λh.(g h) f) λp.λq.p)
+(d) λfee.λfi.λfo.λfum.(fum (fo (fi fee)))
+(e) (λp.(λq.p λx.(x p)) λi.λj.(j i))
