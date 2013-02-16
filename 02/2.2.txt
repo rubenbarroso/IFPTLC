@@ -1,0 +1,62 @@
+We use normal beta reduction.
+
+(a) ((λx.λy.(y x) λp.λq.p) λi.i)
+
+	((λx.λy.(y x) λp.λq.p) λi.i) ==
+	((λx.λy.(y x) λp.λq.p) identity) ==
+	((λx.λy.(y x) select_first) identity) =>
+	(λy.(y select_first) identity) =>
+	(identity select_first) =>
+	select_first
+
+(b) (((λx.λy.λz.((x y) z) λf.λa.(f a)) λi.i) λj.j)
+
+	(((λx.λy.λz.((x y) z) λf.λa.(f a)) λi.i) λj.j) ==
+	(((λx.λy.λz.((x y) z) λf.λa.(f a)) λi.i) identity) ==
+	(((λx.λy.λz.((x y) z) λf.λa.(f a)) identity) identity) ==
+	(((λx.λy.λz.((x y) z) apply) identity) identity) =>
+	((λy.λz.((apply y) z) identity) identity) =>
+	(λz.((apply identity) z) identity) =>
+	((apply identity) identity) ==
+	((λfunc.λarg.(func arg) identity) identity) =>
+	(λarg.(identity arg) identity) =>
+	(identity identity) =>
+	identity
+
+(c) (λh.((λa.λf.(f a) h) h) λf.(f f))
+
+	(λh.((λa.λf.(f a) h) h) λf.(f f)) ==
+	(λh.((λa.λf.(f a) h) h) self_apply) =>
+	((λa.λf.(f a) self_apply) self_apply) =>
+	(λf.(f self_apply) self_apply) =>
+	(self_apply self_apply) =>
+	infinite loop
+
+(d) ((λp.λq.(p q) (λx.x λa.λb.a)) λk.k)
+
+	((λp.λq.(p q) (λx.x λa.λb.a)) λk.k) ==
+	((λp.λq.(p q) (λx.x λa.λb.a)) identity) ==
+	((λp.λq.(p q) (λx.x select_first)) identity) ==
+	((λp.λq.(p q) (identity select_first)) identity) ==
+	((apply (identity select_first)) identity) =>
+	((apply select_first) identity) ==
+	((λfunc.λarg.(func arg) select_first) identity) =>
+	(λarg.(select_first arg) identity) =>
+	(select_first identity) ==
+	(λa.λb.a identity) =>
+	λb.identity
+
+(e) (((λf.λg.λx.(f (g x)) λs.(s s)) λa.λb.b) λx.λy.x)
+
+	(((λf.λg.λx.(f (g x)) λs.(s s)) λa.λb.b) λx.λy.x) ==
+	(((λf.λg.λx.(f (g x)) λs.(s s)) λa.λb.b) select_first) ==
+	(((λf.λg.λx.(f (g x)) λs.(s s)) select_second) select_first) ==
+	(((λf.λg.λx.(f (g x)) self_apply) select_second) select_first) =>
+	((λg.λx.(self_apply (g x)) select_second) select_first) =>
+	(λx.(self_apply (select_second x)) select_first) =>
+	(self_apply (select_second select_first)) ==
+	(self_apply (select_second λa.λb.a)) ==
+	(self_apply (λx.λy.y λa.λb.a)) =>
+	(self_apply λy.y) ==
+	(self_apply identity) =>
+	identity
