@@ -1,0 +1,43 @@
+(a)
+	(i)
+		(identity <expression>) =>
+		<expression>
+
+	(ii)
+		((apply (apply identity)) <expression>) ==
+		((apply (λfunc.λarg.(func arg) identity)) <expression>) =>
+		((apply λarg.(identity arg)) <expression>) => (eta-conversion)
+		((apply identity) <expression>) ==
+		((λfunc.λarg.(func arg) identity) <expression>) =>
+		(λarg.(identity arg) <expression>) => (eta-conversion)
+		(identity <expression>) =>
+		<expression>
+
+(b)
+	(i)
+		apply
+
+	(ii)
+		λx.λy.(((make_pair x) y) identity) ==
+		λx.λy.(((λfirst.λsecond.λfunc.((func first) second) x) y) identity) ==>
+		λx.λy.((λsecond.λfunc.((func x) second) y) identity) ==>
+		λx.λy.(λfunc.((func x) y) identity) =>
+		λx.λy.((identity x) y) =>
+		λx.λy.(x y) => (alpha-conversion)
+		λfunc.λarg.(func arg) ==
+		apply
+
+(c)
+	(i)
+		identity
+
+	(ii)
+		(self_apply (self_apply select_second)) ==
+		(self_apply (λs.(s s) select_second)) =>
+		(self_apply (select_second select_second)) ==
+		(λs.(s s) (select_second select_second)) ==
+		(λs.(s s) (λa.λb.b select_second)) =>
+		(λs.(s s) λb.b) ==
+		(λs.(s s) identity) =>
+		(identity identity) =>
+		identity
